@@ -18,6 +18,7 @@ Urgency - URGENT if any of these is true, otherwise NORMAL:
 - anything unsafe: broken glass, sharp pieces, foreign objects, burns
 - an order is 5 or more days late, or marked delivered but not received
 - the customer says they will post publicly or complain to a consumer forum
+- the customer mentions a child
 Praise and Idea are always NORMAL.
 
 Team - from the category:

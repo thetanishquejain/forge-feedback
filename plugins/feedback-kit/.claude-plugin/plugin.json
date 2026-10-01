@@ -1,6 +1,6 @@
 {
   "name": "feedback-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Triage customer feedback, draft replies to urgent messages, and build a one-page board.",
   "author": { "name": "Forge student" }
 }
