@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brewmark feedback desk — 5–8 Oct 2026</title>
+<style>
+  :root {
+    --bg: #2b1d16;
+    --panel: #352419;
+    --paper: #efe6d4;
+    --paper-alt: #e6dac2;
+    --ink: #2b1d16;
+    --ink-soft: #6b5440;
+    --cream: #f3ead9;
+    --cream-soft: #c9b89c;
+    --copper: #c08b4a;
+    --copper-bright: #e0ae6c;
+    --urgent: #b23e22;
+    --urgent-paper: #e7cab3;
+    --hairline: rgba(243, 234, 217, 0.16);
+    --hairline-paper: rgba(43, 29, 22, 0.2);
+    --font-head: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-data: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .board {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 5rem;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .masthead h1 {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-head);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    letter-spacing: 0.01em;
+    color: var(--cream);
+  }
+
+  .masthead p {
+    margin: 0;
+    max-width: 58ch;
+    color: var(--cream-soft);
+    font-size: 1.05rem;
+  }
+
+  /* ---------- stat strip ---------- */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0 3rem;
+    padding: 1.75rem 0;
+    border-top: 1px dashed var(--hairline);
+    border-bottom: 1px dashed var(--hairline);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .n {
+    display: block;
+    font-family: var(--font-head);
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    line-height: 1;
+    color: var(--copper-bright);
+  }
+
+  .stat.urgent-stat .n {
+    color: var(--urgent);
+  }
+
+  .stat .label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--cream-soft);
+  }
+
+  /* ---------- section heading ---------- */
+
+  section.block {
+    margin-top: 3.25rem;
+  }
+
+  .block h2 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-head);
+    font-weight: 400;
+    font-size: 1.45rem;
+    color: var(--cream);
+  }
+
+  /* ---------- category tally ---------- */
+
+  .tally-row {
+    display: grid;
+    grid-template-columns: 11rem 1fr 2.5rem;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .tally-row + .tally-row {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .tally-row .name {
+    font-size: 0.98rem;
+    color: var(--cream);
+  }
+
+  .tally-row .bar-track {
+    height: 0.55rem;
+    background: rgba(243, 234, 217, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .tally-row .bar-fill {
+    height: 100%;
+    background: var(--copper);
+  }
+
+  .tally-row .count {
+    font-family: var(--font-data);
+    text-align: right;
+    color: var(--copper-bright);
+  }
+
+  /* ---------- urgent tickets ---------- */
+
+  .tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .ticket {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 1.3rem 1.5rem 1.4rem;
+    border-radius: 2px;
+    border-left: 4px solid var(--urgent);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+  }
+
+  .ticket .row1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem 1rem;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-data);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .ticket .row1 .no {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .ticket .row1 .flag {
+    color: var(--urgent);
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  .ticket .row1 .sep {
+    color: var(--hairline-paper);
+  }
+
+  .ticket .quote {
+    margin: 0;
+    max-width: 68ch;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .ticket .row2 {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .ticket .row2 strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------- notes (ideas / praise) ---------- */
+
+  .notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .notes h2 {
+    font-size: 1.2rem;
+  }
+
+  .note-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .note {
+    padding: 1rem 1.1rem;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 2px;
+  }
+
+  .note p {
+    margin: 0 0 0.4rem;
+    max-width: 48ch;
+    font-size: 0.98rem;
+    color: var(--cream);
+  }
+
+  .note .chan {
+    font-family: var(--font-data);
+    font-size: 0.8rem;
+    color: var(--cream-soft);
+  }
+
+  /* ---------- footer ---------- */
+
+  .board footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.85rem;
+    color: var(--cream-soft);
+  }
+
+  /* ---------- one load-in moment ---------- */
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .masthead, .stats {
+    animation: rise 0.6s ease-out both;
+  }
+
+  .stats { animation-delay: 0.08s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .masthead, .stats { animation: none; }
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 640px) {
+    .board { padding: 2.25rem 1.1rem 3.5rem; }
+    .stats { grid-template-columns: 1fr; gap: 1.1rem; }
+    .tally-row { grid-template-columns: 7.5rem 1fr 2rem; }
+    .notes { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+<div class="board">
+
+  <header class="masthead">
+    <h1>Brewmark feedback desk</h1>
+    <p>Every message from email, WhatsApp, Instagram, Twitter and app reviews, 5 to 8 October 2026, sorted and ready for the team.</p>
+  </header>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat">
+      <span class="n">12</span>
+      <span class="label">messages this week</span>
+    </div>
+    <div class="stat urgent-stat">
+      <span class="n">4</span>
+      <span class="label">marked urgent</span>
+    </div>
+    <div class="stat">
+      <span class="n">Quality</span>
+      <span class="label">busiest team, 3 messages</span>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Messages by category</h2>
+    <div class="tally">
+      <div class="tally-row">
+        <span class="name">Product quality</span>
+        <span class="bar-track"><span class="bar-fill" style="width:100%"></span></span>
+        <span class="count">3</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Billing &amp; refunds</span>
+        <span class="bar-track"><span class="bar-fill" style="width:67%"></span></span>
+        <span class="count">2</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Delivery</span>
+        <span class="bar-track"><span class="bar-fill" style="width:67%"></span></span>
+        <span class="count">2</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Praise</span>
+        <span class="bar-track"><span class="bar-fill" style="width:67%"></span></span>
+        <span class="count">2</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Website &amp; app</span>
+        <span class="bar-track"><span class="bar-fill" style="width:33%"></span></span>
+        <span class="count">1</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Idea</span>
+        <span class="bar-track"><span class="bar-fill" style="width:33%"></span></span>
+        <span class="count">1</span>
+      </div>
+      <div class="tally-row">
+        <span class="name">Subscription</span>
+        <span class="bar-track"><span class="bar-fill" style="width:33%"></span></span>
+        <span class="count">1</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Urgent, in the customer's words</h2>
+    <div class="tickets">
+
+      <article class="ticket">
+        <div class="row1">
+          <span class="no">No. 02</span>
+          <span class="sep">/</span>
+          <span>whatsapp</span>
+          <span class="sep">/</span>
+          <span>Billing &amp; refunds</span>
+          <span class="flag">urgent</span>
+        </div>
+        <p class="quote">"Paisa kat gaya but order confirm nahi hua. Rs 1,099 debited, no order in my account."</p>
+        <div class="row2">Routed to <strong>Finance</strong></div>
+      </article>
+
+      <article class="ticket">
+        <div class="row1">
+          <span class="no">No. 07</span>
+          <span class="sep">/</span>
+          <span>twitter</span>
+          <span class="sep">/</span>
+          <span>Delivery</span>
+          <span class="flag">urgent</span>
+        </div>
+        <p class="quote">"Order stuck at 'shipped' for 8 days. Nobody answers the phone. Filing a complaint on the consumer forum tomorrow."</p>
+        <div class="row2">Routed to <strong>Logistics</strong></div>
+      </article>
+
+      <article class="ticket">
+        <div class="row1">
+          <span class="no">No. 10</span>
+          <span class="sep">/</span>
+          <span>email</span>
+          <span class="sep">/</span>
+          <span>Product quality</span>
+          <span class="flag">urgent</span>
+        </div>
+        <p class="quote">"There was a small plastic piece inside the bean bag. My kid almost picked it up."</p>
+        <div class="row2">Routed to <strong>Quality</strong></div>
+      </article>
+
+      <article class="ticket">
+        <div class="row1">
+          <span class="no">No. 12</span>
+          <span class="sep">/</span>
+          <span>email</span>
+          <span class="sep">/</span>
+          <span>Billing &amp; refunds</span>
+          <span class="flag">urgent</span>
+        </div>
+        <p class="quote">"You charged GST twice on my invoice, please send a corrected one."</p>
+        <div class="row2">Routed to <strong>Finance</strong></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="block notes">
+    <div>
+      <h2>On the wish list</h2>
+      <div class="note-list">
+        <div class="note">
+          <p>"Please add UPI autopay for subscriptions. Card renewals keep failing for me."</p>
+          <span class="chan">email</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Kind words</h2>
+      <div class="note-list">
+        <div class="note">
+          <p>"Your Baba Budan roast + oat milk = my whole personality now."</p>
+          <span class="chan">instagram</span>
+        </div>
+        <div class="note">
+          <p>"Customer care fixed my wrong order in a day. Thank you, Priya from support!"</p>
+          <span class="chan">instagram</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built from work/triage.csv. Run /feedback-board again after the next triage to refresh this page.
+  </footer>
+
+</div>
+</body>
+</html>

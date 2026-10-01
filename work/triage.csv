@@ -1,0 +1,13 @@
+id,category,urgency,team,reason
+1,Product quality,NORMAL,Quality,"scrapes the body when I turn it"
+2,Billing & refunds,URGENT,Finance,"Rs 1,099 debited, no order in my account"
+3,Praise,NORMAL,Marketing,"my whole personality now"
+4,Product quality,NORMAL,Quality,"good for French press or only for filter"
+5,Website & app,NORMAL,Tech,"app crashes when I try to change my delivery address"
+6,Idea,NORMAL,Product,"add UPI autopay for subscriptions"
+7,Delivery,URGENT,Logistics,"stuck at 'shipped' for 8 days...consumer forum tomorrow"
+8,Delivery,NORMAL,Logistics,"box was crushed on one side"
+9,Subscription,NORMAL,Customer care,"gift a 3-month subscription to my brother"
+10,Product quality,URGENT,Quality,"small plastic piece inside the bean bag"
+11,Praise,NORMAL,Marketing,"fixed my wrong order in a day"
+12,Billing & refunds,URGENT,Finance,"charged GST twice on my invoice"

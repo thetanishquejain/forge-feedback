@@ -1,0 +1,12 @@
+{
+  "name": "brewmark-tools",
+  "owner": { "name": "Forge student" },
+  "description": "Tools for the Brewmark team",
+  "plugins": [
+    {
+      "name": "feedback-kit",
+      "source": "./plugins/feedback-kit",
+      "description": "Triage customer feedback, draft replies to urgent messages, and build a one-page board."
+    }
+  ]
+}
